@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Eczar:700|Lato:400,700|Source+Sans+Pro:400,600,700,900');
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(../pictures/billie_holiday.png);
+}
+main {
+    margin: 20px 50px;
+    padding: 20px 40px;
+    background-color: #FFF;
+}
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px 20px;
+    width: 100%;
+    background-color: #FFF;
+}
+.flex-container {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+.clear:before,
+.clear:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+h1,
+h2,
+h3 {
+    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+h1 {
+    font-weight: 900;
+}
+h2 {
+    font-weight: 700;
+}
+h3 {
+    font-weight: 600;
+}
+p,
+li,
+address {
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+nav {
+    background-color: #024b68;
+    color: #FFF;
+    height: 60px;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.logo {
+    font-family: 'Eczar', 'Times New Roman', Times, serif;
+    font-size: 2.1em;
+    margin-left: 10%;
+    line-height: 60px;
+}
+.nav-menu {
+    margin-right: 10%;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0 15px 0 0;
+    line-height: 60px;
+}
+nav ul li {
+    font-size: 1.1em;
+    display: inline-block;
+    min-height: 60px;
+    margin: 0;
+}
+nav a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 8px;
+    color: #FFF;
+}
+nav ul a:hover {
+    background-color: #002432;
+}
+
+/* jeden breakpoint dla mniejszych ekranów*/
+
+@media (max-width: 992px) {
+    .flex-container {
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    main {
+        margin: 10px 10px;
+        padding: 10px 10px;
+        background-color: #FFF;
+    }
+    .logo {
+        text-align: center;
+        margin: 0;
+        width: 100%;
+    }
+    .right {
+        width: 100%;
+    }
+    nav ul {
+        background-color: #024b68;
+        margin: 0;
+        padding: 0;
+    }
+    nav ul li {
+        text-align: center;
+        width: 100%;
+    }
+}

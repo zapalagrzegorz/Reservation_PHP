@@ -1,0 +1,62 @@
+* {
+    
+}
+
+form {
+    background-color: #FFF;
+    max-width: 80%;
+    margin: 10vh auto;
+    padding: 30px
+}
+.searchForm {
+    border-bottom: 1px solid grey;
+    margin-bottom: 3vh;
+}
+.reservationForm {
+    margin-top: 0;
+}
+legend {
+    padding-top: 20px;
+}
+fieldset > div, legend {
+    margin: 20px 20px;
+}
+/*input[type=text] {
+    margin: 0 10px;
+}*/
+/*input[type=number] {
+    width: 35px;
+}*/
+/*input[type=checkbox],input[type=number]  {
+    margin-left: 3px;
+    margin-right: 3px;
+}*/
+.wrap {
+    text-align: center;
+    /*margin: 0 auto;*/
+    /*display: inline-block;*/
+}
+.formName {
+    margin-right: 15px;
+}
+/*#emailInput{
+    min-width: 230px;
+    margin-left: 32px
+}*/
+.longInput {
+    /*min-width: 230px;*/
+}
+.error {
+    color: red;
+    margin-right: 15px;
+}
+.centerText {
+    text-align: center !important;
+}
+.hidden {
+    display: none;
+}
+.list-group-item-success {
+    font-weight: bold;
+    font-size: 1.2em;
+}

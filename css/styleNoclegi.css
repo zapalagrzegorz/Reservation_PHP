@@ -1,0 +1,127 @@
+noclegi.flex-container.flex-container {
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.flex-item {
+    flex: 1 1 auto;
+    align-self: stretch;
+    min-width: 300px;
+}
+.noclegi {
+    border-radius: 5px;
+    margin: 0 auto;
+}
+.hotel {
+    background-image: -webkit-linear-gradient(#99B3C7, #a4a4d0);
+    background-image: -o-linear-gradient(#99B3C7, #a4a4d0);
+    background-image: linear-gradient(#CECEE8, #896FAC);
+    border: 1px solid #555;
+    padding: 10px;
+    margin: 0 2.5px;
+}
+.hotel h2 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.hotel .stars {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.title {
+    background-color: #F0F0F9;
+    border: 1px solid black;
+}
+.fa-star {
+    color: #FFD700;
+    margin: 0 10px;
+}
+.price {
+    margin: 25px auto;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    border-width: 10px;
+    border-style: solid;
+}
+#krasicki {
+    background: #CCC url(../pictures/hotelKrasicki.jpg) 0/cover no-repeat;
+}
+#stBruno {
+    background: #CCC url(../pictures/hotelStBruno.png) 0/cover no-repeat;
+}
+#mazurskiRaj {
+    background: #CCC url(../pictures/mazurskiRaj.jpg) 0/cover no-repeat;
+}
+.price p {
+    color: #FFF;
+    text-shadow: 2px 2px 4px #000;
+    text-align: center;
+    line-height: 250px;
+    font-size: 1.5em;
+    margin: 0;
+}
+.location {
+    padding: 0 5px;
+    background-color: #D7CBE7;
+    border: 1px solid black;
+    text-align: center;
+}
+.hotel:hover {
+    background: #000;
+    transition: .5s;
+}
+.hotel:hover .title,
+.hotel:hover .location {
+    background: #000;
+    color: #FFF;
+    transition: .5s;
+}
+.hotel:hover .price>div {
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.51);
+}
+.hotel:hover .price {
+    border-width: 0;
+    transition: .5s;
+}
+.hotel:hover .price p {
+    text-shadow: 2px 2px 10px #FFF;
+    transition: .5s;
+}
+hr {
+    height: 3px;
+    margin: 5% 5%;
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(137, 111, 172, 0.75), rgba(0, 0, 0, 0));
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(137, 111, 172, 0.75), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(137, 111, 172, 1), rgba(255, 255, 255, 1));
+}
+aside {
+    margin: 0 auto;
+    max-width: 1000px;
+    text-align: justify;
+}
+aside h2 {
+    text-align: center;
+}
+ol {
+    font-size: 1.2em;
+    background: #FDE59B;
+    padding: 30px;
+}
+ol li {
+    background: #FFF7E1;
+    padding: 5px;
+    margin-left: 20px;
+}
+ol li a {
+    text-decoration: none;
+    color: #554700;
+}
+ol li a:hover {
+    text-decoration: underline;
+}
