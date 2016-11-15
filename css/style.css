@@ -96,8 +96,13 @@ nav a {
 }
 nav ul a:hover {
     background-color: #002432;
+    text-decoration: none;
+    color: #FFF;
 }
-
+.logo > a {
+    text-decoration: none;
+    color: #FFF;
+}
 /* jeden breakpoint dla mniejszych ekranów*/
 
 @media (max-width: 992px) {
