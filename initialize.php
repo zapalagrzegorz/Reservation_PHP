@@ -9,7 +9,7 @@ $tommorow=strtotime("tomorrow");
 $user = 'root';
 $pass = $sql = $dbConnection= '';
 
-$db = 'hotelMazury'; // $db = 'hotelTestDb'; 
+$db = 'hotelmazury'; // $db = 'hotelTestDb'; 
 $adres = 'localhost';
 
 require_once ('baza.inc');

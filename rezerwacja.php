@@ -31,8 +31,8 @@
             </nav>
         </header>
 <?php
-require_once 'initialize.php';
-require_once 'dbUpdateHandler.php';
+require 'initialize.php';
+require 'dbUpdateHandler.php';
 ?>
         <form class="searchForm form-inline" name="" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <fieldset>
@@ -51,7 +51,7 @@ require_once 'dbUpdateHandler.php';
         </form>
         <form id="js-reservationForm" class="reservationForm form-inline" name="reservationForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <?php
-require_once 'dbSelectHandler.php';
+require 'dbSelectHandler.php';
 ?>
         <script src="js/script.js"></script>
     </body>

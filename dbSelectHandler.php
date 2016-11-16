@@ -7,7 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             SELECT rezerwacje.IDPokoju
             FROM rezerwacje JOIN pokoje on rezerwacje.IDPokoju = pokoje.IdPokoju
             WHERE rezerwacje.DataPoczatkowa  >= '$roomStartDate' AND rezerwacje.DataKoncowa <= '$roomEndsDate'
-        )";
+        );";
+        $dbConnection = new mysqli($adres, $user, $pass, $db) or die('Nie połączono z bazą danych');
         $result = $dbConnection->query($sql);
         if ($result->num_rows > 0) {
             echo '<a href="#" class="centerText list-group-item list-group-item-success">Pokoje dostępne w okresie między: ' .  $roomStartDate . ' a ' . $roomEndsDate . '</a>';
@@ -59,6 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     else {
         echo 'brak daty';
     }
+    $dbConnection->close();
+    unset($dbConnection);
     // checkbox jest jako switch niezbedny do odroznienia czy wysyłane dane maja być przetwarzane jako rezerwacja -->
     // wyświetl formularz rezerwacyjny gdy wynik jest pozytywny
 }

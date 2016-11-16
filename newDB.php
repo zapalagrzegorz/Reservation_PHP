@@ -1,5 +1,5 @@
 <?php
-$newDatabase = 'hotelMazury';
+$newDatabase = 'hotelmazury';
 
 // Create connection
 $conn = new mysqli($adres, $user, $pass);
@@ -16,8 +16,8 @@ if ($conn->query($sql) === TRUE) {
 }
 
 // Create database
-$sql = 'DROP DATABASE IF EXISTS hotelMazury;';
-$sql .= "CREATE DATABASE hotelMazury CHARACTER SET = 'utf8';";
+$sql = 'DROP DATABASE IF EXISTS hotelmazury;';
+$sql .= "CREATE DATABASE hotelmazury CHARACTER SET = 'utf8';";
 
 if ($conn->multi_query($sql) === TRUE) {
     echo 'Database re-created successfully';

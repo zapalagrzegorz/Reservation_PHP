@@ -1,5 +1,5 @@
 <?php 
-    
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['updateDB'])) { 
     // echo 'start: '.$roomStartDate.' end date '.$roomEndsDate;
     // exit;
@@ -138,25 +138,27 @@ function getIDRoomsToReserve(){
  * @$roomIDs (array) room or rooms ID 
  */
 function setSQLReservedRooms($roomIDs, $IDcustom, $startDate, $endDate) {
-    global $sql, $numReservedRooms, $dbConnection, $isReserved;
-    if($numReservedRooms === 1){
-        $sql = "INSERT INTO rezerwacje (IdPokoju, IDKlienta, DataPoczatkowa, DataKoncowa)
+    global $numReservedRooms, $dbConnection, $isReserved;
+    $sql = "INSERT INTO rezerwacje (IdPokoju, IDKlienta, DataPoczatkowa, DataKoncowa)
                 VALUES ($roomIDs[0], $IDcustom, '$startDate', '$endDate');";
+    if($numReservedRooms === 1){
         if($dbConnection->query($sql) === TRUE){
-           echo '<h2 class="finalMessage centerText">Skutecznie dokonano rezerwacji</h2>';
+           echo '<h2 class="finalMessage centerText">Skutecznie dokonano pojedyńczej rezerwacji</h2>';
         } else {
             echo "Error: " . $sql . "<br>" . $dbConnection->error;
         }
     } else {
         for($i = 1; $i < $numReservedRooms; $i++){
             $sql .= "INSERT INTO rezerwacje (IdPokoju, IDKlienta, DataPoczatkowa, DataKoncowa )
-            VALUES ( $roomIDs[$i], $IDcustom, '$startDate', '$endDate');";
+            VALUES ($roomIDs[$i], $IDcustom, '$startDate', '$endDate');";
         }
         if ($dbConnection->multi_query($sql) === TRUE) {
-           echo '<h2 class="finalMessage centerText">Skutecznie dokonano rezerwacji</h2>';
+           echo '<h2 class="finalMessage centerText">Skutecznie dokonano wielokrotnej rezerwacji</h2>';
         } else {
             echo "Error: " . $sql . "<br>" . $dbConnection->error;
         }
     }
+    $dbConnection->close();
+
 }
 ?>
