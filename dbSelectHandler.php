@@ -62,9 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<div class="centerText list-group-item list-group-item-action list-group-item-warning" style="font-weight: 500">Niestety, ale brak wolnych pokoi w tym okresie. Proszę wybierz inny przedział czasowy</div>';
         }
     }
-    // $dbConnection->close();
-    // unset($dbConnection);
-    // checkbox jest jako switch niezbedny do odroznienia czy wysyłane dane maja być przetwarzane jako rezerwacja -->
-    // wyświetl formularz rezerwacyjny gdy wynik jest pozytywny
+    // checkbox przy button'ie jest jako switch niezbedny do odroznienia czy wysyłane dane maja być przetwarzane jako rezerwacja -->
 }
 ?>

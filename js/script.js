@@ -2,9 +2,11 @@ window.addEventListener('load', function () {
 
     var updateDBButton = document.getElementById('js-updateDBButton'),
         updateDBCheckbox = document.getElementById('updateDBCheckbox');
-    updateDBButton.addEventListener('click', function() {
-        updateDBCheckbox.checked = true;
-    });
+    if(updateDBButton !== null) {
+        updateDBButton.addEventListener('click', function() {
+            updateDBCheckbox.checked = true;
+        });
+    }
 
     // $('#js-searchBtn').click(function() {
     //     $('form').hide();
