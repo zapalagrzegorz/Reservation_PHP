@@ -9,7 +9,7 @@ $tempNumber = 12;
 $tommorow=strtotime("tomorrow");
 $user = 'root';
 $pass = $sql = $dbConnection= '';
-$adres = 'localhost';
+$adres = '127.0.0.1';
 $db = 'hotelmazury'; // $db = 'hotelTestDb'; 
 
 require_once ('baza.inc');
