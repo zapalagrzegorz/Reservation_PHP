@@ -2,11 +2,11 @@ form {
     background-color: #FFF;
     max-width: 80%;
     margin: 10vh auto;
-    padding: 30px
 }
 .searchForm {
     border-bottom: 1px solid grey;
     margin-bottom: 3vh;
+    padding: 30px;
 }
 .reservationForm {
     margin-top: 0;

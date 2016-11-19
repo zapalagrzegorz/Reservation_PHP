@@ -4,13 +4,13 @@ $firstNameErr = $lastNameErr = $emailErr = $telephoneErr = $quantityDoubleRoomEr
 $extraBedDoubleRoom = $doubleRoom = $isReserved = false;
 $customerId = $roomNumber = $numReservedRooms = 0;
 $tabRoomId = array();
+$tabRoomExtraBed = array();
 $tempNumber = 12;
 $tommorow=strtotime("tomorrow");
 $user = 'root';
 $pass = $sql = $dbConnection= '';
-
+$adres = '127.0.0.1';
 $db = 'hotelmazury'; // $db = 'hotelTestDb'; 
-$adres = 'localhost';
 
 require_once ('baza.inc');
 $testDB = new baza_sql();
@@ -20,7 +20,7 @@ if (!$testDB->Czy_jest($adres, $user, $pass, $db, 'pokoje')){
     header("Location: rezerwacja.php");
 }
 
-$dbConnection = new mysqli('localhost', $user, $pass, $db) or die('Nie połączono z bazą danych');
+$dbConnection = new mysqli($adres, $user, $pass, $db) or die('Nie połączono z bazą danych');
 
 $sql = "SET NAMES 'UTF8';";
 if ($dbConnection->query($sql) === FALSE) {
@@ -28,6 +28,9 @@ if ($dbConnection->query($sql) === FALSE) {
 }
 validateDate();
 
+
+
+// ---------------------------
 function validateDate() {
 
     global $roomStartDateRaw, $roomStartDate, $roomEndsDateRaw, $roomEndsDate;

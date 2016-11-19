@@ -1,24 +1,29 @@
 <?php
 
 // wyświetlanie wyników dostępnych pokoi
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    if($roomStartDate !== "" && $roomEndsDate !== "") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(strtotime($roomStartDate) >= strtotime($roomEndsDate)){
+        echo '<h2 class="finalMessage centerText">Sprawdź daty rezerwacji</h2>';
+    }
+    else {
         $sql = "SELECT * FROM pokoje WHERE pokoje.IdPokoju NOT IN (
             SELECT rezerwacje.IDPokoju
             FROM rezerwacje JOIN pokoje on rezerwacje.IDPokoju = pokoje.IdPokoju
             WHERE rezerwacje.DataPoczatkowa  >= '$roomStartDate' AND rezerwacje.DataKoncowa <= '$roomEndsDate'
         );";
-        $dbConnection = new mysqli($adres, $user, $pass, $db) or die('Nie połączono z bazą danych');
+        // $dbConnection = new mysqli($adres, $user, $pass, $db) or die('Nie połączono z bazą danych');
         $result = $dbConnection->query($sql);
         if ($result->num_rows > 0) {
             echo '<a href="#" class="centerText list-group-item list-group-item-success">Pokoje dostępne w okresie między: ' .  $roomStartDate . ' a ' . $roomEndsDate . '</a>';
             while($row = $result->fetch_assoc()) {
+            
                 $loopResult = '
                     <a href="#" class="centerText list-group-item list-group-item-action list-group-item-info"> 
                         <input type="checkbox" name=roomResult'.$roomNumber.'> Numer pokoju '
                         .$row['IdPokoju']. ', cena ' .  $row["Cena"] . 'zł/doba, pokój dla osób: ' . $row["RodzajPokoju"] .'
                         <input class="hidden" type="number" name="roomId'.$roomNumber.'" value='.$row["IdPokoju"]. '>
-                        </a>
+                        <input type="checkbox" name="isExtraBed'.$roomNumber.'">Dodatkowe łóżko?
+                    </a>
                 ';
                 echo $loopResult;
                 $roomNumber++;
@@ -57,11 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             echo '<div class="centerText list-group-item list-group-item-action list-group-item-warning" style="font-weight: 500">Niestety, ale brak wolnych pokoi w tym okresie. Proszę wybierz inny przedział czasowy</div>';
         }
     }
-    else {
-        echo 'brak daty';
-    }
-    $dbConnection->close();
-    unset($dbConnection);
+    // $dbConnection->close();
+    // unset($dbConnection);
     // checkbox jest jako switch niezbedny do odroznienia czy wysyłane dane maja być przetwarzane jako rezerwacja -->
     // wyświetl formularz rezerwacyjny gdy wynik jest pozytywny
 }
