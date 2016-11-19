@@ -1,3 +1,3 @@
 # Reservation_PHP
 
-Project made with XAMPP. Clone into htdocs of XAMPP and script will create local DB.
+PHP project made with XAMPP. Reservation page available once cloned into htdocs of XAMPP/WAMP.
