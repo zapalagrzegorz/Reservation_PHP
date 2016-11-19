@@ -13,12 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         if ($result->num_rows > 0) {
             echo '<a href="#" class="centerText list-group-item list-group-item-success">Pokoje dostępne w okresie między: ' .  $roomStartDate . ' a ' . $roomEndsDate . '</a>';
             while($row = $result->fetch_assoc()) {
+            
                 $loopResult = '
                     <a href="#" class="centerText list-group-item list-group-item-action list-group-item-info"> 
                         <input type="checkbox" name=roomResult'.$roomNumber.'> Numer pokoju '
                         .$row['IdPokoju']. ', cena ' .  $row["Cena"] . 'zł/doba, pokój dla osób: ' . $row["RodzajPokoju"] .'
                         <input class="hidden" type="number" name="roomId'.$roomNumber.'" value='.$row["IdPokoju"]. '>
-                        </a>
+                        <input type="checkbox" name="isExtraBed'.$roomNumber.'"> Dodatkowe łóżko?
+                    </a>
                 ';
                 echo $loopResult;
                 $roomNumber++;

@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['updateDB'])) {
         getIDRoomsToReserve();
 
 // update DB
-        setSQLReservedRooms($tabRoomId, $customerId, $roomStartDate, $roomEndsDate);
+        setSQLReservedRooms($tabRoomId, $customerId, $roomStartDate, $roomEndsDate, $tabRoomExtraBed);
     }
 }
 //-----------------------------------------------------------------------------//
@@ -116,14 +116,16 @@ function setCustomerID() {
 }
 function getIDRoomsToReserve(){
 
-    global $tabRoomId, $tempNumber, $numReservedRooms;
+    global $tabRoomId, $tempNumber, $numReservedRooms, $tabRoomExtraBed;
     for($i = 0; $i < $tempNumber; $i++){  
+        // REFACTOR Sprawdzic tylko jedna walidacje
         // czy dla dany pokój był dostępny do rezerwacji
         if(!empty($_POST['roomResult'.$i])){
             // czy został zarezerwowany? - zaznaczony checkbox rezerwacyjny dla danego pokoju
             if(isset($_POST['roomResult'.$i])) {
             // jeśli tak, to pobierz ID pokoju; roomId jest kluczem (name) dla wartości ID (value)
                 $tabRoomId[$numReservedRooms] = $_POST['roomId'.$i];
+                $tabRoomExtraBed[$numReservedRooms] = (isset($_POST['isExtraBed'.$i])) ? true : false;
                 $numReservedRooms++;
             }
         }
@@ -137,10 +139,10 @@ function getIDRoomsToReserve(){
  * @$IDcustom (int) customer ID
  * @$roomIDs (array) room or rooms ID 
  */
-function setSQLReservedRooms($roomIDs, $IDcustom, $startDate, $endDate) {
+function setSQLReservedRooms($roomIDs, $IDcustom, $startDate, $endDate, $tabRoomExtraBed) {
     global $numReservedRooms, $dbConnection, $isReserved;
-    $sql = "INSERT INTO rezerwacje (IdPokoju, IDKlienta, DataPoczatkowa, DataKoncowa)
-                VALUES ($roomIDs[0], $IDcustom, '$startDate', '$endDate');";
+    $sql = "INSERT INTO rezerwacje (IdPokoju, IDKlienta, DataPoczatkowa, DataKoncowa, extraBed)
+                VALUES ($roomIDs[0], $IDcustom, '$startDate', '$endDate', '$tabRoomExtraBed[0]');";
     if($numReservedRooms === 1){
         if($dbConnection->query($sql) === TRUE){
            echo '<h2 class="finalMessage centerText">Skutecznie dokonano pojedyńczej rezerwacji</h2>';
@@ -149,8 +151,8 @@ function setSQLReservedRooms($roomIDs, $IDcustom, $startDate, $endDate) {
         }
     } else {
         for($i = 1; $i < $numReservedRooms; $i++){
-            $sql .= "INSERT INTO rezerwacje (IdPokoju, IDKlienta, DataPoczatkowa, DataKoncowa )
-            VALUES ($roomIDs[$i], $IDcustom, '$startDate', '$endDate');";
+            $sql .= "INSERT INTO rezerwacje (IdPokoju, IDKlienta, DataPoczatkowa, DataKoncowa, extraBed)
+            VALUES ($roomIDs[$i], $IDcustom, '$startDate', '$endDate', $tabRoomExtraBed[$i]);";
         }
         if ($dbConnection->multi_query($sql) === TRUE) {
            echo '<h2 class="finalMessage centerText">Skutecznie dokonano wielokrotnej rezerwacji</h2>';

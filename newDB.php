@@ -27,7 +27,7 @@ if ($conn->multi_query($sql) === TRUE) {
 $conn->close();
 
 
-// Create connection
+// Create connection to DB
 $conn = new mysqli($adres, $user, $pass, $newDatabase);
 if ($conn->connect_error) {
     die('Connection to '.$newDatabase.' failed: ' . $conn->connect_error);
@@ -77,9 +77,9 @@ $sql .= "CREATE TABLE `rezerwacje` (
         `IDPokoju` int(11) NOT NULL,
         `IDKlienta` int(11) NOT NULL,
         `DataPoczatkowa` date NOT NULL,
+        `extraBed` BOOLEAN NOT NULL,
         `DataKoncowa` date NOT NULL)
          ENGINE=InnoDB;";
-
 
 $sql .= "ALTER TABLE `rezerwacje`
   ADD KEY `IDPokoju` (`IDPokoju`),

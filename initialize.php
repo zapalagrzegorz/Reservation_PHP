@@ -4,13 +4,13 @@ $firstNameErr = $lastNameErr = $emailErr = $telephoneErr = $quantityDoubleRoomEr
 $extraBedDoubleRoom = $doubleRoom = $isReserved = false;
 $customerId = $roomNumber = $numReservedRooms = 0;
 $tabRoomId = array();
+$tabRoomExtraBed = array();
 $tempNumber = 12;
 $tommorow=strtotime("tomorrow");
 $user = 'root';
 $pass = $sql = $dbConnection= '';
-
+$adres = '127.0.0.1';
 $db = 'hotelmazury'; // $db = 'hotelTestDb'; 
-$adres = 'localhost';
 
 require_once ('baza.inc');
 $testDB = new baza_sql();
