@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                         <input type="checkbox" name=roomResult'.$roomNumber.'> Numer pokoju '
                         .$row['IdPokoju']. ', cena ' .  $row["Cena"] . 'zł/doba, pokój dla osób: ' . $row["RodzajPokoju"] .'
                         <input class="hidden" type="number" name="roomId'.$roomNumber.'" value='.$row["IdPokoju"]. '>
-                        <input type="checkbox" name="isExtraBed'.$roomNumber.'"> Dodatkowe łóżko?
+                        <input type="checkbox" name="isExtraBed'.$roomNumber.'">Dodatkowe łóżko?
                     </a>
                 ';
                 echo $loopResult;
