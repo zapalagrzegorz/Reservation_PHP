@@ -3,10 +3,9 @@ $firstName  = $lastName = $email = $telephone = $roomStartDateRaw = $roomStartDa
 $firstNameErr = $lastNameErr = $emailErr = $telephoneErr = $quantityDoubleRoomErr= "";
 $extraBedDoubleRoom = $doubleRoom = $isReserved = false;
 $customerId = $roomNumber = $numReservedRooms = 0;
-$tabRoomId = array();
-$tabRoomExtraBed = array();
+$tabRoomId = $tabRoomExtraBed = array();
 $tempNumber = 12;
-$tommorow=strtotime("tomorrow");
+$tommorow = strtotime("tomorrow");
 $user = 'root';
 $pass = $sql = $dbConnection= '';
 $adres = '127.0.0.1';

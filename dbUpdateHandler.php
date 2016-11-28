@@ -1,8 +1,6 @@
 <?php 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['updateDB'])) { 
-    // echo 'start: '.$roomStartDate.' end date '.$roomEndsDate;
-    // exit;
 
 // ustal czy Klient wybrał pokój/pokoje i ich ID
     getIDRoomsToReserve();
@@ -55,6 +53,7 @@ function isInputError() {
       $firstNameErr = "Proszę używać tylko liter";
       $isInputNotValid = true;
     }
+
 // nazwisko
     if(empty($_POST["lastName"])){
         $lastNameErr = "Nazwisko jest wymagane";
@@ -66,6 +65,7 @@ function isInputError() {
         $lastNameErr = "Proszę używać tylko liter";
         $isInputNotValid = true;
     }
+
 // telefon
     if(empty($_POST["telephone"])){
         $telephoneErr = "Telefon jest wymagany";
@@ -77,6 +77,7 @@ function isInputError() {
         $telephoneErr = "Nieprawidłowy format telefonu [123456789]";
         $isInputNotValid = true; 
     }
+
 // email
     if(empty($_POST["email"])){
         $emailErr = "E-mail jest wymagany";
@@ -177,6 +178,5 @@ function setSQLReservedRooms($roomIDs, $IDcustom, $startDate, $endDate, $tabRoom
         }
     }
     $dbConnection->close();
-
 }
 ?>
